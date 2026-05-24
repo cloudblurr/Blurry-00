@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import ProductsHub from './components/ProductsHub';
 import { 
   Cloud, Terminal, Globe, Server, Check, Copy, Network, Shield, Cpu, 
   ArrowUp, Activity, Moon, Sun, Command, HelpCircle, HardDrive, RefreshCw, ExternalLink,
-  Menu, X, ChevronDown, Search, ArrowRight
+  Menu, X, ChevronDown, Search, ArrowRight, Brain, Sparkles, Zap, Wand, Boxes, Upload
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -51,10 +50,10 @@ export default function App() {
   };
 
   const directLinks = [
-    { name: 'Blnq Upload', domain: 'blnq.click', desc: 'Secure asset distribution' },
-    { name: 'AceAgent', domain: 'ace.blurr.cloud', desc: 'Intelligent AI runners' },
-    { name: 'Blnq Harvest', domain: 'hvy.blnq.click', desc: 'Heavy page scraper' },
-    { name: 'Starlock Storage', domain: 'starlock.space', desc: 'Sovereign encrypted vaults' },
+    { name: 'Blnq Upload', domain: 'blnq.click', desc: 'Secure asset distribution', icon: Upload, color: 'from-violet-500 to-indigo-500', glow: 'rgba(139, 92, 246, 0.15)' },
+    { name: 'AceAgent', domain: 'ace.blurr.cloud', desc: 'Intelligent AI runners', icon: Brain, color: 'from-pink-500 to-rose-500', glow: 'rgba(236, 72, 153, 0.15)' },
+    { name: 'Blnq Harvest', domain: 'hvy.blnq.click', desc: 'Heavy page scraper', icon: Terminal, color: 'from-cyan-400 to-blue-500', glow: 'rgba(6, 182, 212, 0.15)' },
+    { name: 'Starlock Storage', domain: 'starlock.space', desc: 'Sovereign encrypted vaults', icon: Shield, color: 'from-emerald-500 to-teal-500', glow: 'rgba(16, 185, 129, 0.15)' },
   ];
 
   return (
@@ -342,132 +341,141 @@ export default function App() {
 
         </section>
 
-        {/* Dynamic Product Showcase Section Anchor */}
+        {/* SkyWalker AI — blurr.cloud's High-End AI Agent Backbone */}
         <section id="products-hub-section" className="scroll-mt-24 border-t border-zinc-900/60 pt-6">
-          <ProductsHub />
-        </section>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative">
+            {/* Ambient glow */}
+            <div className="absolute inset-0 bg-gradient-to-b from-violet-950/20 via-violet-950/5 to-cyan-950/10 pointer-events-none" />
 
-        {/* SkyWalker AI — blurr.cloud's AI Agent Backbone */}
-        <section id="skywalker-ai-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative">
-          <div className="absolute inset-0 bg-gradient-to-b from-violet-950/10 via-transparent to-cyan-950/10 pointer-events-none" />
-          
-          <div className="relative bg-gradient-to-br from-zinc-950 via-zinc-900/80 to-zinc-950 border border-zinc-800 rounded-3xl p-8 sm:p-12 overflow-hidden">
-            {/* Ambient glow orbs */}
-            <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-violet-600/10 blur-[100px] pointer-events-none" />
-            <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-cyan-600/10 blur-[100px] pointer-events-none" />
+            <div className="relative bg-gradient-to-br from-zinc-950 via-violet-950/20 to-zinc-950 border border-violet-500/20 rounded-3xl p-8 sm:p-12 overflow-hidden">
+              {/* Ambient glow orbs */}
+              <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-violet-600/15 blur-[120px] pointer-events-none" />
+              <div className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-cyan-600/10 blur-[120px] pointer-events-none" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-violet-500/8 blur-[150px] pointer-events-none" />
 
-            <div className="relative z-10">
-              {/* Header badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-950/50 border border-violet-500/20 backdrop-blur-sm text-[10px] font-mono tracking-wider text-violet-400 uppercase mb-6">
-                <Cpu className="w-3.5 h-3.5 text-violet-400" />
-                <span>AI Agent Backbone</span>
-              </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                {/* Copy Column */}
-                <div className="lg:col-span-7 space-y-6">
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-medium tracking-tight text-white leading-[1.15]">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-cyan-300 to-blue-400 font-bold">
-                      SkyWalker AI
-                    </span>
-                    <span className="block mt-1 text-zinc-200">The Agent Backbone of blurr.cloud</span>
-                  </h2>
-
-                  <p className="text-zinc-400 text-sm font-sans font-light leading-relaxed max-w-xl">
-                    A one-of-a-kind AI engine that doesn't just respond — it builds. SkyWalker powers the creative and compute layers behind blurr.cloud, orchestrating autonomous agents that generate entire 
-                    <span className="text-violet-300 font-medium"> StateMind Environments</span>: fully customizable digital workspaces, IDEs, and runtime instances that travel with you across devices, run at ultra-low compute costs, and adapt to any workflow.
-                  </p>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-                    <div className="flex items-start gap-3 p-4 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
-                      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-violet-500/10 shrink-0">
-                        <HardDrive className="w-4 h-4 text-violet-400" />
-                      </div>
-                      <div>
-                        <h4 className="text-xs font-mono font-semibold text-white">StateMind Environments</h4>
-                        <p className="text-[11px] text-zinc-400 mt-1 leading-relaxed">Portable workspaces, IDEs, and instances that persist across sessions and devices.</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3 p-4 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
-                      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-cyan-500/10 shrink-0">
-                        <Activity className="w-4 h-4 text-cyan-400" />
-                      </div>
-                      <div>
-                        <h4 className="text-xs font-mono font-semibold text-white">Low-Compute Runtime</h4>
-                        <p className="text-[11px] text-zinc-400 mt-1 leading-relaxed">Engineered for maximum performance on minimal hardware — anywhere, anytime.</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3 p-4 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
-                      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-500/10 shrink-0">
-                        <Shield className="w-4 h-4 text-blue-400" />
-                      </div>
-                      <div>
-                        <h4 className="text-xs font-mono font-semibold text-white">Fully Customizable</h4>
-                        <p className="text-[11px] text-zinc-400 mt-1 leading-relaxed">Tailor every aspect of your environment — no two instances are the same.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* CTA */}
-                  <div className="flex items-center gap-4 pt-2">
-                    <button className="px-5 py-2.5 bg-gradient-to-r from-violet-600 to-cyan-600 hover:opacity-90 text-white rounded-xl font-mono text-xs transition-all tracking-wide cursor-pointer flex items-center gap-2 shadow-lg shadow-violet-500/20">
-                      <span>Learn About SkyWalker</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                    <span className="text-[10px] font-mono text-zinc-500">// SOVEREIGN AI BACKBONE ACTIVE</span>
-                  </div>
+              <div className="relative z-10">
+                {/* Header badge */}
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/30 backdrop-blur-sm text-[10px] font-mono tracking-widest text-violet-300 uppercase mb-8">
+                  <Brain className="w-4 h-4 text-violet-400" />
+                  <span>AI Agent Backbone</span>
+                  <span className="text-violet-500">•</span>
+                  <span className="text-emerald-400">Sovereign</span>
                 </div>
 
-                {/* Visual / Telemetry Column */}
-                <div className="lg:col-span-5">
-                  <div className="bg-gradient-to-b from-zinc-900 to-zinc-950 border border-zinc-800 p-6 rounded-2xl space-y-5 shadow-2xl relative overflow-hidden">
-                    <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none">
-                      <Cpu className="w-40 h-40 text-white" />
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                  {/* Copy Column */}
+                  <div className="lg:col-span-7 space-y-7">
+                    <div>
+                      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-medium tracking-tight text-white leading-[1.1]">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-300 via-purple-200 to-cyan-300 font-bold">
+                          SkyWalker AI
+                        </span>
+                      </h2>
+                      <div className="flex items-center gap-2 mt-2">
+                        <span className="h-px flex-1 bg-gradient-to-r from-violet-500/50 to-transparent" />
+                        <span className="text-[11px] font-mono tracking-widest text-violet-400/80 uppercase">The Creative Agent Backbone</span>
+                      </div>
                     </div>
 
-                    <div className="flex items-center gap-2 border-b border-zinc-800 pb-3">
-                      <Network className="w-4 h-4 text-cyan-400" />
-                      <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">SkyWalker Core Telemetry</span>
+                    <p className="text-zinc-300 text-sm sm:text-base font-sans font-light leading-relaxed max-w-xl">
+                      SkyWalker is a <span className="text-white font-medium">one-of-a-kind AI</span> — blurr.cloud's high-end, powerful, and creative agent backbone. 
+                      It doesn't just respond; it <span className="text-violet-300 font-medium">builds entire worlds</span>. At its core, SkyWalker generates{' '}
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400 font-semibold">StateMind Environments</span>
+                      {' '}— fully customizable digital workspaces, IDEs, and runtime instances that are portable across devices, 
+                      engineered for ultra-low compute, and infinitely configurable to any creative workflow.
+                    </p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
+                      <div className="flex flex-col items-start gap-3 p-5 rounded-2xl bg-gradient-to-b from-violet-500/5 to-transparent border border-violet-500/15 hover:border-violet-500/30 transition-all group/card">
+                        <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-violet-500/15 shrink-0 ring-1 ring-violet-500/20 group-hover/card:ring-violet-500/40 transition-all">
+                          <Boxes className="w-5 h-5 text-violet-400" />
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-display font-semibold text-white mb-1">StateMind Environments</h4>
+                          <p className="text-[12px] text-zinc-400 leading-relaxed">Portable workspaces and IDEs that persist anywhere — take your instance across devices without losing state.</p>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-col items-start gap-3 p-5 rounded-2xl bg-gradient-to-b from-cyan-500/5 to-transparent border border-cyan-500/15 hover:border-cyan-500/30 transition-all group/card">
+                        <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-cyan-500/15 shrink-0 ring-1 ring-cyan-500/20 group-hover/card:ring-cyan-500/40 transition-all">
+                          <Zap className="w-5 h-5 text-cyan-400" />
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-display font-semibold text-white mb-1">Low-Compute, High-Power</h4>
+                          <p className="text-[12px] text-zinc-400 leading-relaxed">Maximum creative throughput on minimal hardware — run advanced AI workloads anywhere, anytime.</p>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-col items-start gap-3 p-5 rounded-2xl bg-gradient-to-b from-purple-500/5 to-transparent border border-purple-500/15 hover:border-purple-500/30 transition-all group/card">
+                        <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-purple-500/15 shrink-0 ring-1 ring-purple-500/20 group-hover/card:ring-purple-500/40 transition-all">
+                          <Wand className="w-5 h-5 text-purple-400" />
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-display font-semibold text-white mb-1">One-of-a-Kind AI</h4>
+                          <p className="text-[12px] text-zinc-400 leading-relaxed">No two StateMind instances are alike — SkyWalker adapts, learns, and sculpts environments to your creative fingerprint.</p>
+                        </div>
+                      </div>
                     </div>
 
-                    <div className="space-y-4">
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <span className="text-[9px] font-mono text-zinc-500 block uppercase">Active Agents</span>
-                          <span className="text-base font-mono font-bold text-white mt-0.5">{(stats.activeBuilders * 0.87).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
-                        </div>
-                        <div>
-                          <span className="text-[9px] font-mono text-zinc-500 block uppercase">StateMind Instances</span>
-                          <span className="text-base font-mono font-bold text-white mt-0.5">{(stats.runningPipelines * 1.42).toFixed(0)}</span>
-                        </div>
+                    {/* CTA */}
+                    <div className="flex items-center gap-4 pt-1">
+                      <button className="px-6 py-3 bg-gradient-to-r from-violet-600 to-cyan-600 hover:from-violet-500 hover:to-cyan-500 text-white rounded-xl font-mono text-xs transition-all tracking-wide cursor-pointer flex items-center gap-2 shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50">
+                        <span>Explore SkyWalker</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+                      <span className="text-[10px] font-mono text-violet-400/60">// SOVEREIGN AI BACKBONE ACTIVE</span>
+                    </div>
+                  </div>
+
+                  {/* Visual / Telemetry Column */}
+                  <div className="lg:col-span-5">
+                    <div className="bg-gradient-to-b from-zinc-900 to-zinc-950 border border-violet-500/20 p-6 rounded-2xl space-y-5 shadow-2xl relative overflow-hidden">
+                      <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none">
+                        <Brain className="w-40 h-40 text-white" />
                       </div>
 
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <span className="text-[9px] font-mono text-zinc-500 block uppercase">Avg Response</span>
-                          <span className="text-base font-mono font-bold text-emerald-400 mt-0.5">{(stats.latencyMs * 0.65).toFixed(2)}ms</span>
-                        </div>
-                        <div>
-                          <span className="text-[9px] font-mono text-zinc-500 block uppercase">Environment Types</span>
-                          <span className="text-base font-mono font-bold text-cyan-400 mt-0.5">27+</span>
-                        </div>
+                      <div className="flex items-center gap-2 border-b border-zinc-800 pb-3">
+                        <Sparkles className="w-4 h-4 text-violet-400" />
+                        <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">SkyWalker Core Telemetry</span>
                       </div>
 
-                      <div className="p-3 bg-zinc-950/80 rounded-xl border border-zinc-800 space-y-1">
-                        <div className="flex justify-between items-center text-[10px] font-mono">
-                          <span className="text-zinc-500">Backbone Uptime SLA</span>
-                          <span className="text-emerald-400 font-semibold">99.999%</span>
+                      <div className="space-y-4">
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <span className="text-[9px] font-mono text-zinc-500 block uppercase">Active Agents</span>
+                            <span className="text-base font-mono font-bold text-white mt-0.5">{(stats.activeBuilders * 0.87).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
+                          </div>
+                          <div>
+                            <span className="text-[9px] font-mono text-zinc-500 block uppercase">StateMind Instances</span>
+                            <span className="text-base font-mono font-bold text-white mt-0.5">{(stats.runningPipelines * 1.42).toFixed(0)}</span>
+                          </div>
                         </div>
-                        <div className="w-full bg-zinc-900 h-1 rounded-full overflow-hidden mt-1.5">
-                          <div className="bg-emerald-500 h-full transition-all duration-300 w-[99.999%]" />
-                        </div>
-                      </div>
 
-                      <div className="flex items-center gap-2 pt-1">
-                        <RefreshCw className="w-3.5 h-3.5 text-zinc-600 animate-spin-slow" />
-                        <span className="text-[9px] font-mono text-zinc-500">StateMind orchestration engine v3.2 live</span>
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <span className="text-[9px] font-mono text-zinc-500 block uppercase">Avg Response</span>
+                            <span className="text-base font-mono font-bold text-emerald-400 mt-0.5">{(stats.latencyMs * 0.65).toFixed(2)}ms</span>
+                          </div>
+                          <div>
+                            <span className="text-[9px] font-mono text-zinc-500 block uppercase">Environment Types</span>
+                            <span className="text-base font-mono font-bold text-cyan-400 mt-0.5">27+</span>
+                          </div>
+                        </div>
+
+                        <div className="p-3 bg-zinc-950/80 rounded-xl border border-zinc-800 space-y-1">
+                          <div className="flex justify-between items-center text-[10px] font-mono">
+                            <span className="text-zinc-500">Backbone Uptime SLA</span>
+                            <span className="text-emerald-400 font-semibold">99.999%</span>
+                          </div>
+                          <div className="w-full bg-zinc-900 h-1 rounded-full overflow-hidden mt-1.5">
+                            <div className="bg-gradient-to-r from-violet-500 to-emerald-500 h-full transition-all duration-300 w-[99.999%]" />
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2 pt-1">
+                          <RefreshCw className="w-3.5 h-3.5 text-zinc-600 animate-spin-slow" />
+                          <span className="text-[9px] font-mono text-zinc-500">StateMind orchestration engine v3.2 live</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -477,34 +485,51 @@ export default function App() {
           </div>
         </section>
 
-        {/* Quick Matrix Link Cards outlining direct access nodes */}
+        {/* Integrations / Product Cards */}
         <section id="solutions-access-grid" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6">
-          <div className="border-b border-zinc-900 pb-3">
-            <span className="text-[10px] font-mono text-zinc-400 tracking-wider uppercase">Direct Portal Connections Directory</span>
+          <div className="border-b border-zinc-900 pb-3 flex items-center justify-between">
+            <div>
+              <span className="text-[10px] font-mono text-zinc-400 tracking-wider uppercase">Blurr Integrations & Products</span>
+            </div>
+            <span className="text-[9px] font-mono text-zinc-600">4 active services</span>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {directLinks.map((link) => (
-              <a
-                key={link.domain}
-                id={`card-link-${link.name.toLowerCase().replace(/\s+/g, '-')}`}
-                href={`https://${link.domain}`}
-                target="_blank"
-                referrerPolicy="no-referrer"
-                className="group bg-zinc-950/70 hover:bg-zinc-900/40 border border-zinc-900 hover:border-zinc-800 p-4 rounded-xl transition-all flex flex-col justify-between"
-              >
-                <div>
-                  <h5 className="font-display font-medium text-xs text-white group-hover:text-violet-400 transition-colors flex items-center justify-between">
-                    <span>{link.name}</span>
-                    <ExternalLink className="w-3 h-3 text-zinc-600 group-hover:text-violet-400 transition-colors" />
-                  </h5>
-                  <p className="text-[11px] text-zinc-500 font-light mt-1">{link.desc}</p>
-                </div>
-                <div className="text-[10px] font-mono text-zinc-400 mt-4 pt-2 border-t border-zinc-900">
-                  {link.domain}
-                </div>
-              </a>
-            ))}
+            {directLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <a
+                  key={link.domain}
+                  id={`card-link-${link.name.toLowerCase().replace(/\s+/g, '-')}`}
+                  href={`https://${link.domain}`}
+                  target="_blank"
+                  referrerPolicy="no-referrer"
+                  className="group relative bg-zinc-950/80 hover:bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 rounded-2xl p-5 transition-all flex flex-col gap-4 overflow-hidden"
+                >
+                  {/* Ambient glow on hover */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" style={{ background: `radial-gradient(400px circle at 50% 0%, ${link.glow}, transparent 70%)` }} />
+                  
+                  {/* Icon placeholder */}
+                  <div className="relative flex items-center justify-center w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 group-hover:border-zinc-700 shrink-0 transition-all group-hover:scale-105">
+                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${link.color} opacity-0 group-hover:opacity-20 transition-opacity`} />
+                    <Icon className="w-6 h-6 text-zinc-500 group-hover:text-zinc-200 relative z-10 transition-colors" />
+                  </div>
+                  
+                  <div className="relative flex-1">
+                    <h5 className="font-display font-medium text-sm text-white group-hover:text-violet-300 transition-colors flex items-center justify-between">
+                      <span>{link.name}</span>
+                      <ExternalLink className="w-3 h-3 text-zinc-700 group-hover:text-violet-400 transition-colors shrink-0 ml-1" />
+                    </h5>
+                    <p className="text-[11px] text-zinc-500 font-light mt-1.5 leading-snug">{link.desc}</p>
+                  </div>
+
+                  <div className="relative flex items-center justify-between text-[10px] font-mono text-zinc-500 pt-3 border-t border-zinc-900 group-hover:border-zinc-800 transition-colors">
+                    <span className="text-zinc-600 group-hover:text-zinc-400 transition-colors truncate mr-2">{link.domain}</span>
+                    <span className="text-emerald-600 shrink-0">ONLINE</span>
+                  </div>
+                </a>
+              );
+            })}
           </div>
         </section>
 
