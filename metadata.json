@@ -1,0 +1,6 @@
+{
+  "name": "Blurr.cloud",
+  "description": "A next-generation digital civilization layer for creators, developers, and modern internet users.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

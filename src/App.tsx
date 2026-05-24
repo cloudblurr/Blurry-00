@@ -1,0 +1,416 @@
+import { useState, useEffect } from 'react';
+import ProductsHub from './components/ProductsHub';
+import { 
+  Cloud, Terminal, Globe, Server, Check, Copy, Network, Shield, Cpu, 
+  ArrowUp, Activity, Moon, Sun, Command, HelpCircle, HardDrive, RefreshCw, ExternalLink,
+  Menu, X, ChevronDown, Search, ArrowRight
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+
+export default function App() {
+  const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({});
+  const [activeRegion, setActiveRegion] = useState('SF');
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuSearch, setMenuSearch] = useState('');
+  
+  // Real-time stat simulator variables
+  const [stats, setStats] = useState({
+    globalLoad: 41.2,
+    activeBuilders: 31250,
+    edgeNodes: 142,
+    runningPipelines: 489,
+    latencyMs: 1.4,
+  });
+
+  useEffect(() => {
+    const handleStatTicks = setInterval(() => {
+      setStats((prev) => ({
+        globalLoad: +(prev.globalLoad + (Math.random() * 0.8 - 0.4)).toFixed(1),
+        activeBuilders: prev.activeBuilders + Math.floor(Math.random() * 5 - 2),
+        edgeNodes: prev.edgeNodes,
+        runningPipelines: prev.runningPipelines + Math.floor(Math.random() * 3 - 1),
+        latencyMs: +(prev.latencyMs + (Math.random() * 0.04 - 0.02)).toFixed(2),
+      }));
+    }, 4000);
+    return () => clearInterval(handleStatTicks);
+  }, []);
+
+  const handleCopyText = (text: string, id: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedStates(prev => ({ ...prev, [id]: true }));
+    setTimeout(() => {
+      setCopiedStates(prev => ({ ...prev, [id]: false }));
+    }, 2000);
+  };
+
+  const handleScrollToHub = () => {
+    const element = document.getElementById('products-hub-section');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const directLinks = [
+    { name: 'Blnq Upload', domain: 'blnq.click', desc: 'Secure asset distribution' },
+    { name: 'AceAgent', domain: 'ace.blurr.cloud', desc: 'Intelligent AI runners' },
+    { name: 'Blnq Harvest', domain: 'hvy.blnq.click', desc: 'Heavy page scraper' },
+    { name: 'Starlock Storage', domain: 'starlock.space', desc: 'Sovereign encrypted vaults' },
+  ];
+
+  return (
+    <div id="blurr-landing-root" className="min-h-screen bg-[#09090b] text-zinc-100 flex flex-col selection:bg-violet-500/30 selection:text-white relative">
+      
+      {/* Visual Ambient Grid / Haze Backdrops */}
+      <div className="absolute top-0 left-0 right-0 h-[480px] bg-gradient-to-b from-violet-950/15 via-transparent to-transparent pointer-events-none -z-10" />
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-violet-600/5 blur-[140px] pointer-events-none -z-10 animate-pulse-slow" />
+      <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-cyan-700/5 blur-[120px] pointer-events-none -z-10" />
+
+      {/* Modern Header / Navigation Bar */}
+      <nav id="navbar" className="sticky top-0 z-40 w-full bg-[#09090b]/80 backdrop-blur-md border-b border-zinc-900/80 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between relative">
+          
+          {/* Logo brand */}
+          <div id="navbar-brand" className="flex items-center gap-3">
+            <div className="relative flex items-center justify-center w-9 h-9 rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800">
+              <div className="absolute inset-0 bg-gradient-to-tr from-violet-600/30 to-blue-500/30 blur-sm" />
+              <Cloud className="w-4 h-4 text-zinc-200 relative z-10" />
+            </div>
+            <div>
+              <span className="font-display font-bold text-lg text-white">
+                Blurr<span className="text-violet-400">.cloud</span>
+              </span>
+              <div className="flex items-center gap-1 mt-0.5">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute animate-ping inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                </span>
+                <span className="text-[8px] font-mono tracking-widest text-[#10b981] uppercase select-none font-bold">
+                  SOVEREIGN HUB ONLINE
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Dynamic Stylish Navigation Gateway Button & Overlay Menu */}
+          <div className="flex items-center gap-3">
+            
+            {/* The Stylish Portal Trigger Button */}
+            <button
+              id="nav-gateway-trigger"
+              onClick={() => {
+                setMenuOpen(!menuOpen);
+                setMenuSearch('');
+              }}
+              className={`relative flex items-center gap-2.5 px-4 py-2 rounded-xl text-xs font-mono border transition-all duration-300 cursor-pointer ${
+                menuOpen 
+                  ? 'bg-violet-950/40 border-violet-500 text-white shadow-[0_0_15px_rgba(139,92,246,0.15)]' 
+                  : 'bg-zinc-900/70 border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 hover:bg-zinc-900'
+              }`}
+            >
+              <span className="relative flex h-2 w-2">
+                <span className={`absolute inline-flex h-full w-full rounded-full opacity-75 ${menuOpen ? 'animate-ping bg-violet-400' : 'bg-emerald-400'}`}></span>
+                <span className={`relative inline-flex rounded-full h-2 w-2 ${menuOpen ? 'bg-violet-500' : 'bg-emerald-500'}`}></span>
+              </span>
+              <span>NETWORK PORTALS</span>
+              <ChevronDown className={`w-3.5 h-3.5 text-zinc-500 transition-transform duration-300 ${menuOpen ? 'rotate-180 text-violet-400' : ''}`} />
+            </button>
+
+            {/* Quick Actions Portal Link (Desktop only) */}
+            <button
+              id="header-btn-hub-jump"
+              onClick={handleScrollToHub}
+              className="hidden sm:inline-flex px-4 py-2 bg-zinc-900 border border-zinc-800 hover:border-violet-500/30 rounded-xl text-xs font-mono text-zinc-300 hover:text-white transition-all cursor-pointer shadow-sm"
+            >
+              Enter Hub Portal
+            </button>
+          </div>
+
+          {/* Modern Interactive Expandable Menu Dropdown Panel */}
+          <AnimatePresence>
+            {menuOpen && (
+              <motion.div
+                id="megamenu-dropdown-overlay"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
+                className="absolute top-full right-4 sm:right-8 mt-3 w-[calc(100vw-2rem)] sm:w-96 bg-zinc-950/95 backdrop-blur-xl border border-zinc-900 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] overflow-hidden z-50 p-4"
+              >
+                {/* Search Bar inside menu */}
+                <div className="relative mb-3.5">
+                  <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Search className="h-3.5 w-3.5 text-zinc-500" />
+                  </span>
+                  <input
+                    type="text"
+                    value={menuSearch}
+                    onChange={(e) => setMenuSearch(e.target.value)}
+                    placeholder="Search cloud nodes / links..."
+                    className="w-full text-xs font-mono bg-zinc-900/65 border border-zinc-800 focus:border-violet-500/50 rounded-xl py-2 pl-9 pr-4 text-zinc-200 placeholder-zinc-500 outline-none transition-all"
+                  />
+                  {menuSearch && (
+                    <button 
+                      onClick={() => setMenuSearch('')}
+                      className="absolute inset-y-0 right-0 pr-3 flex items-center text-[10px] font-mono text-zinc-500 hover:text-zinc-300"
+                    >
+                      CLEAR
+                    </button>
+                  )}
+                </div>
+
+                {/* Grid Links */}
+                <span className="text-[10px] font-mono text-zinc-550 block uppercase px-1 mb-2 tracking-wide">// Active Cloud Gateways</span>
+                <div className="space-y-1.5 max-h-[280px] overflow-y-auto pr-1">
+                  {directLinks
+                    .filter(link => 
+                      link.name.toLowerCase().includes(menuSearch.toLowerCase()) || 
+                      link.domain.toLowerCase().includes(menuSearch.toLowerCase()) ||
+                      link.desc.toLowerCase().includes(menuSearch.toLowerCase())
+                    )
+                    .map((link) => {
+                      const isCopied = copiedStates[link.domain];
+                      return (
+                        <div
+                          key={link.domain}
+                          className="group relative flex flex-col justify-between p-3 rounded-xl bg-zinc-900/40 hover:bg-violet-950/10 border border-zinc-900 hover:border-violet-500/20 transition-all duration-200"
+                        >
+                          <div className="flex items-start justify-between gap-1">
+                            <div>
+                              <span className="font-display font-medium text-xs text-zinc-100 group-hover:text-violet-300 transition-colors flex items-center gap-1.5">
+                                <span className="h-1.5 w-1.5 rounded-full bg-violet-500 animate-pulse" />
+                                {link.name}
+                              </span>
+                              <p className="text-[11px] text-zinc-400 font-sans font-light mt-0.5 leading-snug">{link.desc}</p>
+                            </div>
+
+                            <div className="flex items-center gap-1.5">
+                              <button
+                                onClick={() => handleCopyText(`https://${link.domain}`, link.domain)}
+                                className="p-1.5 rounded-md hover:bg-zinc-800 text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer"
+                                title="Copy portal URL"
+                              >
+                                {isCopied ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                              </button>
+                              
+                              <a
+                                href={`https://${link.domain}`}
+                                target="_blank"
+                                referrerPolicy="no-referrer"
+                                className="p-1.5 rounded-md hover:bg-zinc-800 text-zinc-500 hover:text-zinc-300 transition-colors"
+                                title="Open in new tab"
+                              >
+                                <ExternalLink className="w-3 h-3" />
+                              </a>
+                            </div>
+                          </div>
+
+                          <div className="flex justify-between items-center text-[9px] font-mono mt-2 pt-2 border-t border-zinc-900/60 text-zinc-500">
+                            <span className="text-zinc-400 group-hover:text-zinc-200 transition-colors">{link.domain}</span>
+                            <span className="text-[#10b981]">// ONLINE</span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  {directLinks.filter(link => 
+                    link.name.toLowerCase().includes(menuSearch.toLowerCase()) || 
+                    link.domain.toLowerCase().includes(menuSearch.toLowerCase()) ||
+                    link.desc.toLowerCase().includes(menuSearch.toLowerCase())
+                  ).length === 0 && (
+                    <div className="p-6 text-center text-[11px] font-mono text-zinc-500">
+                      NO ACTIVE GATEWAYS FOUND
+                    </div>
+                  )}
+                </div>
+
+                {/* Footer section inside dropdown */}
+                <div className="mt-4 pt-3 border-t border-zinc-900/80 flex items-center justify-between text-[10px] font-mono text-zinc-500 bg-zinc-950/40">
+                  <span>SECURE GATEWAY ENVELOPE</span>
+                  <button 
+                    onClick={() => {
+                      setMenuOpen(false);
+                      handleScrollToHub();
+                    }}
+                    className="flex items-center gap-1 text-violet-400 hover:text-violet-300 cursor-pointer"
+                  >
+                    <span>View Showcase</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </button>
+                </div>
+
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+        </div>
+      </nav>
+
+      {/* Main Container */}
+      <main className="flex-grow pt-10 sm:pt-16 pb-20">
+        
+        {/* Concise and visually outstanding Hero Block detailing Blurr's mission */}
+        <section id="hero-statement-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center md:text-left relative">
+          
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            
+            {/* Mission Copy block detailing user's tagline + text */}
+            <div className="md:col-span-7 space-y-6">
+              
+              {/* Premium Badge */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-zinc-950/80 border border-zinc-800 backdrop-blur-sm text-[10px] font-mono tracking-wider text-violet-400 uppercase">
+                <Activity className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Elevated Cloud Creativity</span>
+              </div>
+
+              {/* Tagline constraint strictly implemented: "a next-generation digital civilization layer for creators, developers, and modern internet users." */}
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-display font-medium tracking-tight text-white leading-[1.15]">
+                Blurr is <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-cyan-300 to-blue-400 font-bold">a next-generation digital civilization layer</span> for creators, developers, and modern internet users.
+              </h1>
+
+              {/* Company detail block strictly implemented */}
+              <p className="text-zinc-400 text-xs sm:text-sm font-sans font-light leading-relaxed max-w-2xl">
+                Blurr Cloud is a company focused on elevated cloud creativity and versatile digital experiences — leveraging modern platforms, infrastructure, and intelligent tools to empower creators, developers, and individuals at the highest level.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <button
+                  id="btn-discover-now"
+                  onClick={handleScrollToHub}
+                  className="px-5 py-2.5 bg-gradient-to-r from-violet-600 to-blue-600 hover:opacity-90 text-white rounded-xl font-mono text-xs transition-all tracking-wide cursor-pointer flex items-center gap-2 shadow-lg"
+                >
+                  <span>Explore Cloud Hub Portals</span>
+                  <Command className="w-3.5 h-3.5" />
+                </button>
+                
+                <span className="text-[10px] font-mono text-zinc-500">// ALL STACKS DEPLOYED ON SSL PORTS</span>
+              </div>
+            </div>
+
+            {/* Visual interactive edge telemetry block */}
+            <div className="md:col-span-5 bg-gradient-to-b from-zinc-900 to-zinc-950 border border-zinc-850 p-6 rounded-3xl space-y-6 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-8 opacity-[0.02] pointer-events-none">
+                <HardDrive className="w-48 h-48 text-white" />
+              </div>
+
+              <div className="flex items-center justify-between border-b border-zinc-900 pb-3">
+                <div className="flex items-center gap-2">
+                  <Network className="w-4 h-4 text-violet-400" />
+                  <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">Edge Synapse Status</span>
+                </div>
+                <div className="flex bg-zinc-900 p-0.5 rounded-lg border border-zinc-800 text-[9px] font-mono">
+                  {['SF', 'Paris', 'Tokyo'].map((reg) => (
+                    <button
+                      key={reg}
+                      onClick={() => setActiveRegion(reg)}
+                      className={`px-2 py-0.5 rounded transition-all ${activeRegion === reg ? 'bg-zinc-800 text-white' : 'text-zinc-500 hover:text-zinc-300'}`}
+                    >
+                      {reg}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <span className="text-[9px] font-mono text-zinc-500 block uppercase">Transit Load</span>
+                    <span className="text-base font-mono font-bold text-white mt-0.5">{stats.globalLoad.toFixed(1)}%</span>
+                  </div>
+                  <div>
+                    <span className="text-[9px] font-mono text-zinc-500 block uppercase">Running Tasks</span>
+                    <span className="text-base font-mono font-bold text-white mt-0.5">{stats.runningPipelines} ops/s</span>
+                  </div>
+                </div>
+
+                <div className="p-3 bg-zinc-950/80 rounded-xl border border-zinc-900 space-y-1">
+                  <div className="flex justify-between items-center text-[10px] font-mono">
+                    <span className="text-zinc-500">Gateway latency ({activeRegion}-Edge-01)</span>
+                    <span className="text-emerald-400 font-semibold">{stats.latencyMs.toFixed(2)}ms</span>
+                  </div>
+                  <div className="w-full bg-zinc-900 h-1 rounded-full overflow-hidden mt-1.5">
+                    <div className="bg-emerald-500 h-full transition-all duration-300" style={{ width: `${Math.min(100, 30 + stats.latencyMs * 25)}%` }} />
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 pt-1">
+                  <Shield className="w-3.5 h-3.5 text-zinc-600" />
+                  <span className="text-[9px] font-mono text-zinc-500">Security level formally validated (ECDSA-384 keys)</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        {/* Dynamic Product Showcase Section Anchor */}
+        <section id="products-hub-section" className="scroll-mt-24 border-t border-zinc-900/60 pt-6">
+          <ProductsHub />
+        </section>
+
+        {/* Quick Matrix Link Cards outlining direct access nodes */}
+        <section id="solutions-access-grid" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6">
+          <div className="border-b border-zinc-900 pb-3">
+            <span className="text-[10px] font-mono text-zinc-400 tracking-wider uppercase">Direct Portal Connections Directory</span>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {directLinks.map((link) => (
+              <a
+                key={link.domain}
+                id={`card-link-${link.name.toLowerCase().replace(/\s+/g, '-')}`}
+                href={`https://${link.domain}`}
+                target="_blank"
+                referrerPolicy="no-referrer"
+                className="group bg-zinc-950/70 hover:bg-zinc-900/40 border border-zinc-900 hover:border-zinc-800 p-4 rounded-xl transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <h5 className="font-display font-medium text-xs text-white group-hover:text-violet-400 transition-colors flex items-center justify-between">
+                    <span>{link.name}</span>
+                    <ExternalLink className="w-3 h-3 text-zinc-600 group-hover:text-violet-400 transition-colors" />
+                  </h5>
+                  <p className="text-[11px] text-zinc-500 font-light mt-1">{link.desc}</p>
+                </div>
+                <div className="text-[10px] font-mono text-zinc-400 mt-4 pt-2 border-t border-zinc-900">
+                  {link.domain}
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+      </main>
+
+      {/* Persistent Footer */}
+      <footer id="footer" className="bg-[#09090b] border-t border-zinc-900/90 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            
+            <div className="flex items-center gap-2.5">
+              <div className="relative flex items-center justify-center w-7 h-7 rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800">
+                <div className="absolute inset-0 bg-gradient-to-r from-violet-600/20 to-blue-500/20 blur-sm" />
+                <Cloud className="w-3.5 h-3.5 text-zinc-300 relative z-10" />
+              </div>
+              <span className="font-display font-bold text-sm text-white">
+                Blurr<span className="text-violet-400">.cloud</span>
+              </span>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-6 text-[11px] font-mono text-zinc-500">
+              <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:text-zinc-200 cursor-pointer">
+                Back to Summit
+              </button>
+              <span>// UPTIME: 99.999% SLA ENVELOPE</span>
+              <span>EST. 2026</span>
+            </div>
+
+          </div>
+
+          <div className="border-t border-zinc-900/80 mt-8 pt-8 text-center sm:text-left text-[11px] text-zinc-655 font-mono text-zinc-600 leading-relaxed">
+            &copy; {new Date().getFullYear()} Blurr.cloud. Focused on elevated cloud creativity and versatile digital experiences. Powered by custom extreme-performance micro-pipelines.
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  );
+}
