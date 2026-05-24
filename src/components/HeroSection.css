@@ -1,0 +1,59 @@
+/* Hero Section Styles */
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #87CEEB, #f0f8ff);
+}
+
+.cloud-animation {
+  position: relative;
+  text-align: center;
+}
+
+.cloud {
+  width: 150px;
+  height: 90px;
+  background: #f0f8ff;
+  border-radius: 50%;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite ease-in-out;
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: #f0f8ff;
+  border-radius: 50%;
+}
+
+.cloud::before {
+  width: 100px;
+  height: 60px;
+  top: -40px;
+  left: 10px;
+}
+
+.cloud::after {
+  width: 120px;
+  height: 70px;
+  top: 20px;
+  left: 50px;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.hero-text {
+  font-size: 24px;
+  color: #333;
+  margin-top: 20px;
+}

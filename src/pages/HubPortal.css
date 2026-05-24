@@ -1,0 +1,49 @@
+.hub-portal-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #000011, #001133);
+  color: #fff;
+}
+
+.space-background {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: url('/path-to-particle-image-or-generator') repeat;
+  background-size: cover;
+}
+
+.floating-products {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.product {
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.5);
+  animation: float 5s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(-20px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+}

@@ -1,0 +1,37 @@
+.hamburger-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+}
+
+.hamburger-icon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.hamburger-icon span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  border-radius: 2px;
+  box-shadow: 0px 0px 8px rgba(255, 65, 108, 0.8), 0px 0px 4px rgba(255, 75, 43, 0.8);
+  animation: glowing 2s infinite;
+}
+
+@keyframes glowing {
+  0% {
+    box-shadow: 0px 0px 4px rgba(255, 65, 108, 0.5);
+  }
+  50% {
+    box-shadow: 0px 0px 12px rgba(255, 75, 43, 0.8);
+  }
+  100% {
+    box-shadow: 0px 0px 4px rgba(255, 65, 108, 0.5);
+  }
+}
