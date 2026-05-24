@@ -37,39 +37,26 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #3f3f46;
   }
+
+  /* Hamburger Menu Glow */
+  .hamburger-menu {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+  }
+
+  .hamburger-menu:hover {
+    animation: glow 1.5s infinite ease-in-out;
+  }
+
 }
 
-@keyframes pulse-slow {
+@keyframes glow {
   0%, 100% {
-    opacity: 0.4;
-    transform: scale(1) translate(0px, 0px);
-  }
-  33% {
-    opacity: 0.6;
-    transform: scale(1.1) translate(30px, -50px);
-  }
-  66% {
-    opacity: 0.3;
-    transform: scale(0.9) translate(-30px, 20px);
-  }
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 15s infinite ease-in-out;
-}
-
-@keyframes gradient-x {
-  0%, 100% {
-    background-size: 200% 200%;
-    background-position: left center;
-  }
-  50% {
-    background-size: 200% 200%;
-    background-position: right center;
-  }
-}
-
-.animate-gradient-x {
-  animation: gradient-x 8s ease infinite;
-}
-
+    box-shadow: 0;}
+},30px scale.",
+."50
